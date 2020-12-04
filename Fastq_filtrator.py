@@ -41,8 +41,8 @@ else:
     good_file = open(good_name, "w")
 
 
-def filtration_for_lengt (lin1, min_length):    # Функция для прохождения ридами фильтра по длине
-    int_length = int(lin1.split("=")[1])
+def filtration_for_lengt (lin2, min_length):    # Функция для прохождения ридами фильтра по длине
+    int_length = len(lin2)
     min_length = int(min_length)
     if int_length >= min_length:
         return True
@@ -90,7 +90,7 @@ with open(fasta, "r") as fastq:
     while lin1 != "":                               # Вроде бы каждый fastq файл заканчивается ""
         lin2 = fastq.readline().rstrip("\n")        # Так мы можем ловить конец файла
         lin3, lin4 = fastq.readline().rstrip("\n"), fastq.readline().rstrip("\n")
-        length_filter = filtration_for_lengt(lin1, min_length)      # Запуск сторонних функций для
+        length_filter = filtration_for_lengt(lin2, min_length)      # Запуск сторонних функций для
         if gc_counter is True:                                      # Прохождения различных фильтров
             gc_filter = gc_counter_filter(lin2, min_gc, max_gc)
         else:
